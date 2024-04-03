@@ -13,7 +13,7 @@ namespace IntergalacticExplorationMissions
             NameIndex = 0,
             MissionIndex = 1,
             ScoreIndex = 2;
-        public const string 
+        public const string
             Welcome = "Benvingut a Intergalactic Exploration Missions SL",
             Continue = "prem tecla per continuar",
             DataRequest = "Introdueix les informacions requerides",
@@ -25,7 +25,8 @@ namespace IntergalacticExplorationMissions
             MissionRequest = "Introdueix el nom de la missió",
             ScoreRequest = "Introdueix la puntuació",
             NameConstraint = "Només lletres sense accents",
-            MissionConstraint = "format: 'nom de consonent grega' - 'qualsevol'",
-            ScoreConstraint = "numeros entre [0-500]";
+            MissionConstraint = "format: 'nom de consonent grega' - 'tres digits'",
+            ScoreConstraint = "numeros entre [0-500]",
+            RemainEmployee = "{0}/{1} empleats";
     }
 }

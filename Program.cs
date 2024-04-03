@@ -37,6 +37,8 @@ namespace IntergalacticExplorationMissions
                     bool valid = false;
                     do
                     {
+                        Console.WriteLine(Constants.RemainEmployee,i+1,Constants.Rows);
+                        Console.WriteLine();
                         Console.WriteLine(valuesRequest[j]);
                         Console.WriteLine(valuesConstains[j]);
                         userInput = Console.ReadLine() ?? "";
@@ -54,7 +56,6 @@ namespace IntergalacticExplorationMissions
                                 break;
                         }
 
-                        Console.Clear();
 
                         if (!valid)
                         {
@@ -66,6 +67,8 @@ namespace IntergalacticExplorationMissions
                         }
 
                     } while (!valid);
+                    Console.Clear();
+
                 }
                 //si los inputs son correctos se añaden a la lista scores
                 scores.Add(

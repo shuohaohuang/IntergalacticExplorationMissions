@@ -31,6 +31,12 @@ namespace IntergalacticExplorationMissions
             //Lista que contiene las letras griegas
             List<string> consonantes = new List<string>
             {
+                "alpha",
+                "digamma",
+                "epsilon",
+                "iota",
+                "omicron",
+                "eta",
                 "beta",
                 "gamma",
                 "delta",
@@ -52,12 +58,16 @@ namespace IntergalacticExplorationMissions
                 "psi",
                 "omega"
             };
-
+            Regex regex = new Regex("[0-9]{3}");
             //separa el parametro de entrada por '-'
             string[] name = mission.ToLower().Split('-');
             //Si el parametro no contiene '-', la congitud de name es 1 retorna false
             //Si no la lista de letras no contiene el name[0], comienza con (letra griega), retorna false
-            return consonantes.Contains(name[0].Trim()) && name.Length > 1;
+            if (name.Length == 2)
+            {
+                return consonantes.Contains(name[0].Trim()) && regex.IsMatch(name[1]);
+            }
+            return false;
         }
 
         public static bool CheckScore(string score)
@@ -76,7 +86,6 @@ namespace IntergalacticExplorationMissions
             scores.Sort();
             for (int i = 0; i < scores.Count(); i++)
             {
-
                 if (!viewedMission.Contains(scores[i].Mission))
                 {
                     List<Score> player = scores
