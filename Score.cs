@@ -28,6 +28,7 @@ namespace IntergalacticExplorationMissions
 
         public static bool CheckMission(string mission)
         {
+            //Lista que contiene las letras griegas
             List<string> consonantes = new List<string>
             {
                 "beta",
@@ -52,7 +53,10 @@ namespace IntergalacticExplorationMissions
                 "omega"
             };
 
+            //separa el parametro de entrada por '-'
             string[] name = mission.ToLower().Split('-');
+            //Si el parametro no contiene '-', la congitud de name es 1 retorna false
+            //Si no la lista de letras no contiene el name[0], comienza con (letra griega), retorna false
             return consonantes.Contains(name[0].Trim()) && name.Length > 1;
         }
 
@@ -67,23 +71,27 @@ namespace IntergalacticExplorationMissions
         {
             List<Score> ranking = new List<Score>();
             List<string> viewedMission = new List<string>();
+
+            // ordeno la lista entrante por puntucion
             scores.Sort();
             for (int i = 0; i < scores.Count(); i++)
             {
-                List<Score> player = scores
-                    .Where(score => score.Mission == scores[i].Mission)
-                        .GroupBy(score => score.Player)
-                        .Select(p => p.First())
-                        .ToList();
+
                 if (!viewedMission.Contains(scores[i].Mission))
                 {
+                    List<Score> player = scores
+                        .Where(score => score.Mission == scores[i].Mission) //filtro todas las missiones del mismo tipo
+                        .GroupBy(score => score.Player) // de las filtradas las agrupa por empleado
+                        .Select(p => p.First()) // y selecciona el primero de la lista, és el mayor ya que la lista inicial se ordeno previamente
+                        .ToList();
                     viewedMission.Add(scores[i].Mission);
-                    
-                    
+
+                    // se anade todo el contenido de la lista al resultado final
                     foreach (Score score in player)
                         ranking.Add(score);
                 }
             }
+            // se ordena el resultado final
             ranking.Sort();
             return ranking;
         }

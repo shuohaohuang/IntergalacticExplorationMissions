@@ -18,6 +18,7 @@ namespace IntergalacticExplorationMissions
                 { 1, Constants.MissionConstraint },
                 { 2, Constants.ScoreConstraint }
             };
+
             List<Score> scores = new List<Score>();
 
             Console.WriteLine(Constants.Welcome);
@@ -30,6 +31,7 @@ namespace IntergalacticExplorationMissions
                 string userInput;
                 List<string> input = new List<string>();
                 Console.WriteLine(Constants.DataRequest);
+
                 for (int j = 0; j < Constants.RequiredValues; j++)
                 {
                     bool valid = false;
@@ -38,6 +40,7 @@ namespace IntergalacticExplorationMissions
                         Console.WriteLine(valuesRequest[j]);
                         Console.WriteLine(valuesConstains[j]);
                         userInput = Console.ReadLine() ?? "";
+                        //switch case para cambiar la invocacion de metodos comprovador
                         switch (j)
                         {
                             case 0:
@@ -61,8 +64,10 @@ namespace IntergalacticExplorationMissions
                         {
                             input.Add(userInput);
                         }
+
                     } while (!valid);
                 }
+                //si los inputs son correctos se añaden a la lista scores
                 scores.Add(
                     new(
                         input[Constants.NameIndex],
@@ -71,6 +76,8 @@ namespace IntergalacticExplorationMissions
                     )
                 );
             }
+            //Printa el ranking
+
             Console.WriteLine($"{Constants.Employee}\t\t{Constants.Mission}\t\t{Constants.Score}");
             foreach (Score score in Score.GenerateUniqueRanking(scores))
                 Console.WriteLine(score.ToString());
