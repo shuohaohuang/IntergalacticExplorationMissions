@@ -22,7 +22,7 @@ namespace IntergalacticExplorationMissions
 
         public static bool CheckName(string name)
         {
-            Regex regex = new Regex("[a-z]", RegexOptions.IgnoreCase);
+            Regex regex = new Regex("^[a-z]+$", RegexOptions.IgnoreCase);
             return regex.IsMatch(name);
         }
 
